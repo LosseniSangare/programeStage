@@ -1,0 +1,76 @@
+ALGORITHME DE TRI PAR ORDRE CROISSANT
+
+fonction partitionner(tableau T, entier premier, entier dernier, entier pivot){
+    échanger T[pivot] et T[dernier]  // échange le pivot avec le dernier du tableau , le pivot devient le dernier du tableau
+    j := premier
+    pour i de premier à dernier - 1 // la boucle se termine quand i = (dernier-1).
+        si T[i] <= T[dernier] alors
+            échanger T[i] et T[j]
+            j := j + 1
+	finsi
+
+    échanger T[dernier] et T[j]
+    renvoyer j
+
+}
+
+
+
+  fonction tri_rapide(tableau T, entier premier, entier dernier){
+        si premier < dernier alors 
+            pivot := choix_pivot(T, premier, dernier)
+            pivot := partitionner(T, premier, dernier, pivot)
+            tri_rapide(T, premier, pivot-1)
+            tri_rapide(T, pivot+1, dernier)
+	finsi
+	}
+
+
+
+fonction tri(tableau[reel]){
+
+ entier n=(taille_tableau) - 1
+ entier pivot=aleatoire(pemier,dernier) // choix aleatoire du pivot entre le premier indice et le dernier
+ entier premier = 0 			//premier indice du tableau;
+ entier dernier= n			//dernier  indice du tableau;
+tri_rapide(tableau T, entier premier, entier dernier)
+
+retourner tableau;
+}
+
+
+
+////////////////// ALGORITHME DE RECHERCHE////////////////////////////////////////////
+
+/déclarations
+ début, fin, val, mil, N : Entiers
+ t : Tableau [0..N] d'entiers classé
+ trouvé : Booléen
+ 
+//initialisation
+ début ← 0 
+ fin ← N
+ trouvé ← faux
+ Saisir val
+
+//Boucle de recherche
+ // La condition début inférieur ou égal à fin permet d'éviter de faire
+ // une boucle infinie si 'val' n'existe pas dans le tableau.
+  Tant que trouvé != vrai et début <= fin:
+      mil ← partie_entière((début + fin)/2)
+      si t[mil] == val:
+         trouvé ← vrai
+      sinon:
+         si val > t[mil]:
+            début ← mil+1
+         sinon:
+            fin ← mil-1
+ //Affichage du résultat
+  Si trouvé == vrai:
+      Afficher "La valeur ", val , " est au rang ", mil
+  Sinon:
+      Afficher "La valeur ", val , " n'est pas dans le tableau"
+
+
+
+
